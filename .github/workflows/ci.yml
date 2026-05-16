@@ -13,18 +13,21 @@ jobs:
         runs-on: ubuntu-latest
         
         steps:
-          - uses: actions/checkout@v3
+          - uses: actions/checkout@v4
             
           - name: Set up python
-            uses: actions/setup-python@v4
+            uses: actions/setup-python@v5
             with:
                 python-version: "3.12"
 
           - name: Install dependencies
-            run: pip install -r requirements.txt
-            
+            run: |
+              pip install --upgrade pip
+              pip install -r requirements.txt
+              pip install pytest pytest-django
+
           - name: Run tests
-            run: pytest booking/tests.py -v
+            run: python -m pytest booking/tests.py -v
             env:
                 DB_USER: test
                 SECRET_KEY: test-secret-key
