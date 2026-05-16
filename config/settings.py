@@ -49,9 +49,6 @@ CELERY_RESULT_BACKEND = os.getenv('REDIS_URL')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
